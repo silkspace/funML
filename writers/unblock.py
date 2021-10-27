@@ -29,6 +29,7 @@ response = generate_text(context)
 st.caption(context)
 st.write(response['text'])
 
+full_text = context + ' ' + response['text']
 st.subheader('')
-st.download_button('Download your Custom Response', response['text'])
+st.sidebar.download_button('Download your Custom Response', full_text)
 #st.balloons()
