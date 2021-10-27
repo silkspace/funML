@@ -3,12 +3,12 @@ import requests
 
 size = st.sidebar.selectbox(
     'How long a response do you want?',
-    ('Tweet Length', 'Paragraph', 'Page')
+    ('Tweet', 'Paragraph', 'Page')
 )
+st.header('Unblock and Be Inspired')
+st.text(f'this will generate a {size} length response')
 
-st.write(size)
-
-lmaps = {'Tweet Length': 120, 'Paragraph': 320, 'Page': 1000}
+lmaps = {'Tweet': 120, 'Paragraph': 320, 'Page': 1000}
 
 context = st.text_area('Write your best opening paragraph here', 'A Quantum theory of Gravity needs at least three unique attributes;')
 
@@ -30,6 +30,6 @@ st.caption(context)
 st.write(response['text'])
 
 full_text = context + ' ' + response['text']
-st.subheader('')
+
 st.sidebar.download_button('Download your Custom Response', full_text)
 #st.balloons()
