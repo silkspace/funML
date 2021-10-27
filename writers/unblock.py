@@ -1,5 +1,7 @@
 import streamlit as st
 import requests
+import csv
+from datetime import datetime
 
 size = st.sidebar.selectbox(
     'How long a response do you want?',
@@ -29,10 +31,18 @@ response = generate_text(context)
 st.caption(context)
 st.write(response['text'])
 
-full_text = context + ' ' + response['text']
+full_text = context + '  ' + response['text']
 
 st.sidebar.download_button('Download your Custom Response', full_text)
 #st.balloons()
 
 st.header('')
 st.write("check out [TensorML](https://www.tensorml.com) for more")
+
+@st.cache
+def save_response():
+    writer = csv.writer(open('./generated.csv', 'a'))
+    writer.writerow([size, context, response['text'], datetime.now()])
+    print('saved')
+    
+save_response()
