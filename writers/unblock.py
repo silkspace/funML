@@ -33,3 +33,6 @@ full_text = context + ' ' + response['text']
 
 st.sidebar.download_button('Download your Custom Response', full_text)
 #st.balloons()
+
+st.header('')
+st.write("check out [link](https://www.tensorml.com) for more fun!")
