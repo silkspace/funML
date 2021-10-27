@@ -10,7 +10,7 @@ st.write(size)
 
 lmaps = {'Tweet Length': 120, 'Paragraph': 320, 'Page': 1000}
 
-context = st.text_input('Write your best opening paragraph here', 'A Quantum theory of Gravity needs at least three unique attributes;')
+context = st.text_area('Write your best opening paragraph here', 'A Quantum theory of Gravity needs at least three unique attributes;')
 
 @st.cache
 def generate_text(context):
@@ -29,4 +29,6 @@ response = generate_text(context)
 st.caption(context)
 st.write(response['text'])
 
+st.subheader('')
+st.download_button('Download your Custom Response', response['text'])
 #st.balloons()
