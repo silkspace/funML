@@ -3,16 +3,16 @@ import requests
 import csv
 from datetime import datetime
 
-size = st.sidebar.selectbox(
+
+st.header('Unblock and Be Inspired')
+size = st.selectbox(
     'How long a response do you want?',
     ('Tweet', 'Paragraph', 'Page')
 )
-st.header('Unblock and Be Inspired')
-st.text(f'this will generate a {size} length response')
 
 lmaps = {'Tweet': 120, 'Paragraph': 320, 'Page': 1000}
 
-context = st.text_area('Write your best opening paragraph here', 'A Quantum theory of Gravity needs at least three unique attributes;')
+context = st.text_area('Write your best opening paragraph here:', 'A Quantum theory of Gravity needs at least three unique attributes;')
 
 @st.cache
 def generate_text(context):
@@ -33,7 +33,7 @@ st.write(response['text'])
 
 full_text = context + '  ' + response['text']
 
-st.sidebar.download_button('Download your Custom Response', full_text)
+st.download_button('Download your Custom Response', full_text)
 #st.balloons()
 
 st.header('')
